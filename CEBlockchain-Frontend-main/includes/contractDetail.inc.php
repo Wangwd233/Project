@@ -31,7 +31,8 @@
     echo '<form action="includes/contractAgree.inc.php" method="post">
             <h2>Donate credits</h2>
             <input type="number" name="ContractId" value="'.$id.'" hidden>
-            <input type="number" step="0.01" name="Amount" placeholder="enter donate amount" required>
+            <input type="number" name="remainAmount" value="'.$temp.'" hidden>
+            <input type="number" step="0.01" name="Amount" placeholder="enter donate amount" max="'.$temp.'" required>
             <br>
             <br>
             <button type="submit" value="submit">Confirm</button>

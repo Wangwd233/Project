@@ -9,7 +9,7 @@ include_once 'header.php';
         <form action="includes/newContracts2.inc.php" method="post">
             <?php
             if (isset($_SESSION["userid"])) {
-                echo '<input type="number" name="sponsorId" value="'.$_SESSION["userid"].'" hidden>'
+                echo '<input type="number" name="sponsorId" value="'.$_SESSION["userid"].'" hidden>';
             }
             ?>
             <p>Contract Name:</p>
