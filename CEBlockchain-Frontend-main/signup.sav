@@ -1,0 +1,172 @@
+
+  <?php
+     session_start();
+
+     if(isset($_SESSION['submitted_form_values'])){extract($_SESSION['submitted_form_values']);}
+
+     include_once 'header.php';
+  ?>
+
+      <article>
+        <center>
+            <h2>Sign Up</h2>
+            <form action="includes/signup.inc.php" method= "post">
+             Your Name......
+             <input type="text" name="name" value="
+             <?php 
+                 if(isset($name))
+                    {
+                        echo stripslashes(htmlspecialchars($name));
+                    }
+                    else
+                    {
+                       echo "";
+                    } 
+                ?>">
+                
+             <br><br>
+             Email Address..
+             <input type="text" name="email" value="
+             <?php 
+                 if(isset($email))
+                    {
+                        echo stripslashes(htmlspecialchars($email));
+                    }
+                    else
+                    {
+                       echo "";
+                    } 
+                ?>">
+             
+             <br><br>
+             Your Username.
+             <input type="text" name="username" value="
+             <?php 
+                 if(isset($username))
+                    {
+                        echo stripslashes(htmlspecialchars($username));
+                    }
+                    else
+                    {
+                      echo "";
+                    } 
+                ?>">
+             
+             <br><br>
+             
+             Member Type...
+              <select name="memtype" id="member-select">
+                  <option value="" selected disabled>-Select Membership-</option></option>
+                  <option value="Consumer">Consumer</option>
+                  <option value="Vender">Vendor</option>
+                  <option value="Sequester">Sequester</option>                  
+              </select>
+             
+             <br><br>
+             Your City........
+             <input type="text" name="city" value="
+             <?php 
+                 if(isset($city))
+                    {
+                        echo stripslashes(htmlspecialchars($city));
+                    }
+                    else
+                    {
+                       echo "";
+                    } 
+                ?>">
+             
+             <br><br>
+             Your Country....
+             <input type="text" name="country" value="
+             <?php 
+                 if(isset($country))
+                    {
+                        echo stripslashes(htmlspecialchars($city));
+                    }
+                    else
+                    {
+                       echo "";
+                    } 
+                ?>">
+             
+             <br><br>
+             Select Password.
+             <input type="password" name="pwd" value="
+             <?php 
+                 if(isset($pwd))
+                    {
+                        echo stripslashes(htmlspecialchars($pwd));
+                    }
+                    else
+                    {
+                       
+                    } 
+                ?>">
+             
+             <br><br>
+             
+             Reenter Pwd ....
+             <input type="password" name="pwdrepeat" value="
+             <?php 
+                 if(isset($pwdrepeat))
+                    {
+                        echo stripslashes(htmlspecialchars($pwdrepeat));
+                    }
+                    else
+                    {
+                       
+                    } 
+                ?>">
+             
+             <br><br>
+             
+             <button type="submit" name= "submit">Submit Button</button><br><br>
+             
+            </form>
+             <?php
+         if(isset($_GET["error"]))
+         {
+             if($_GET["error"] == "emptyinput")
+             {
+               echo "<p>Please fill in all fields!<br> Hit Back button to try again.</p>";
+             }
+             else if($_GET["error"] == "invaliduid")
+             {
+               echo "<p>Please check name is correct!<br> Hit Back button to try again.</p>";
+             }
+             elseif($_GET["error"] == "invalidemail")
+             {
+               echo "<p>Please enter a proper email!<br> Hit Back button to try again.</p>";
+             }
+             elseif($_GET["error"] == "passwordsdontmatch")
+             {
+               echo "<p>Passwords don't match!<br> Hit Back button to try again.</p>";
+             }
+             elseif($_GET["error"] == "stmtfailed")
+             {
+               echo "<p>Somthing went wrong!<br> Hit Back button to try again.</p>";
+             }
+             else if($_GET["error"] == "usernametaken")
+             {
+               echo "<p>Username/Email taken, hit back button and choose another!</p>";
+             }
+             else if($_GET["error"] == "none")
+             {
+               echo "<p>You have signed up! <br> Please go to Login.</p>";
+             }
+              
+          }
+      ?>
+        </center>
+      </article>
+      <hr>
+     
+      <?php
+        include_once 'footer.php';
+      ?>
+      <?php
+
+        if(isset($_SESSION['submitted_form_values'])){unset($_SESSION['submitted_form_values']);}
+        
+      ?>
