@@ -9,11 +9,11 @@ include_once 'header.php';
         <?php
           echo "<li><a href='newContract.php'>Create new contract</a></li>";
           echo "<li><a href='view_contract.php'>Show Contract List</a></li>";
-        if (isset($_SESSION["userid"])) {
+        /**if (isset($_SESSION["userid"])) {
           echo $_SESSION["userid"];
         } else {
           echo "No login";
-        }
+        }*/
         ?>
         <br>
         <br>

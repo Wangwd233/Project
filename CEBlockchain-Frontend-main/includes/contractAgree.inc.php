@@ -13,11 +13,11 @@ require_once "dbh.inc.php";
 require_once "functions.inc.php";
 
  $contractId = $_POST["ContractId"];
- $subscriberId = "1";
  $subscribeAmount = $_POST["Amount"];
  $remainAmount = $_POST["remainAmount"];
+ $subscriberId = $_SESSION['userid']; //get user id
 
- 
+//when the user donated amount is not 
 if ($subscribeAmount != $remainAmount){
     try{
     //$conn = new mysqli($hostname,$username,$password,$database);
@@ -34,6 +34,9 @@ if ($subscribeAmount != $remainAmount){
         $sql = "DELETE FROM Contract WHERE Contractid='$contractId'";
         echo $sql;
         $conn->query($sql);
+        $sql1 = "DELETE FROM member_contract WHERE contract_id='$contractId'";
+        echo $sql1;
+        $conn->query($sql1);
         header("location: ../view_contract.php");
     }
     catch(Exception $e){
